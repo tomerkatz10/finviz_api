@@ -1,7 +1,5 @@
 # finviz_api
 
-Do you always feel like you're rushing to find the next best stock? Well with the Finviz API screener you can let the stocks come to you.
-I'm going to show you how to connect to Finviz API and with a defined set of parameters, then you get a list of your preferable stocks and save it as CSV or in your Database.
 Finviz makes the URL simple to implement in the code (just add the ticker symbol after http://finviz.com/quote.ashx?t=) although it comes with several limitations I won't describe here that makes it a harder task than it is and that's the reason I used Mario Stoev unofficial API as it was rather easy and intuitive to use and didn't involve many installs like in other API's out there.
 So this is what you need to do to connect to the API
 First, you need to install Finviz API
@@ -64,11 +62,11 @@ try:
 except Exception as e:
     print(f'No stocks after screening. {e}')
     stock_list = None
-# Either use finviz built in to_csv
+## Either use finviz built in to_csv
 stock_list.to_csv("stock.csv")
-# Or use pandas to_excel
+## Or use pandas to_excel
 stock_df = pd.DataFrame(stock_list.data)
 stock_df.to_excel(export_path+file_name, sheetname='filtered_stocks', index=False) # You might need to use xlsxwriter
-# Or create a SQLite database
+## Or create a SQLite database
 stock_list.to_sqlite("stock.sqlite3")
 If you would like the entire code for this article, you can visit this GitHub. I hope this article will prove useful to your endeavors in the future. Thank you so much for reading!
